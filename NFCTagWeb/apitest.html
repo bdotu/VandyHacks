@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    <script src="http://www.parsecdn.com/js/parse-1.6.4.min.js"></script>
+  </head>
+
+  <body>
+    <button type="button" onclick=gameSession()>Create Game Session</button>
+    <button type="button" onclick=startGame()>Start a game</button>
+    <button type="button" onclick=getLocation()>Get Location</button>
+
+    <div id="map" style="width: 500px; height: 400px;"></div>
+
+    <script>
+      Parse.initialize("0Zxv6joQQVuxT4p6C0GTkc6tN5tF2s8PYZWx3t3v", "TxZu2pYZHjfkUb7Dm7rhaZy4UJNY90a8RXMl2zCI");
+
+      function gameSession(){
+        // Parse.initialize("0Zxv6joQQVuxT4p6C0GTkc6tN5tF2s8PYZWx3t3v", "TxZu2pYZHjfkUb7Dm7rhaZy4UJNY90a8RXMl2zCI");
+
+        //Log In if currentUser is null
+        var currentUser = Parse.User.current();
+        if (currentUser == null){
+          Parse.User.logIn("gameMaster", "password", {
+            success: function(currentUser){
+              // Create the object.
+              var GameSession = Parse.Object.extend("GameSession");
+              var game = new GameSession();
+
+              game.set("full", false);
+              game.set("gameMaster", currentUser.id);
+              game.set("player1", null);
+              game.set("player2", null);
+              game.set("player3", null);
+
+              game.save(null, {
+                success: function(game) {
+                  // console.log("fdfd");
+
+                  game.save();
+                }
+              });
+            },
+            error: function(user, error){
+            console.log(error);
+            }
+          })
+        }
+      }
+
+      function startGame(){
+        var GameSession = Parse.Object.extend("GameSession");
+        var game = new GameSession();
+        var query = new Parse.Query(GameSession);
+        query.get("hmYW3cYPrO", {
+            success: function(game){
+              if (game.get("full") == true){
+                // console.log("Poop");
+                window.open("file:///Users/dotu/workspace/VandyHacks/NFCTagWeb/maps.html");
+              } else {
+                gameSession();
+              }
+              // console.log(game.get("full"));
+            },
+            error: function(object, error){
+              console.log("Some shit!");
+            }
+        })
+      }
+
+      var locationArray = [
+        [36.1486, -86.8050],
+        [36.1483905, -86.8041659]
+      ];
+
+      function getLocation(){
+            var playerLocations = Parse.Object.extend("playerLocations");
+            // var location = new playerLocation();
+            var initArray = []
+            var query = new Parse.Query(playerLocations);
+            query.equalTo("gameSession", "hmYW3cYPrO");
+            query.find({
+              success: function(results) {
+                console.log("Success");
+                console.log(results);
+                for (var i = 0; i < results.length; i++) {
+                  var object = results[i];
+                  // console.log(object.get("pLat"));
+                  // console.log(object.get("pLong"));
+                  initArray.push(object.get("pLat"));
+                  initArray.push(object.get("pLong"));
+                }
+                locationArray.push(initArray);
+                // console.log(locationArray[0][0]);
+                // console.log(locationArray[0][1]);
+                // console.log(locationArray[1][0]);
+                // console.log(locationArray[1][1]);
+
+                // Map Items
+                var iconURLPrefix = 'http://maps.google.com/mapfiles/ms/icons/';
+
+                var icons = [
+                  iconURLPrefix + 'red-dot.png',
+                  iconURLPrefix + 'green-dot.png',
+                  iconURLPrefix + 'blue-dot.png'
+                ]
+                var iconsLength = icons.length;
+
+                var map = new google.maps.Map(document.getElementById('map'), {
+                  zoom: 10,
+                  center: new google.maps.LatLng(-37.92, 151.25),
+                  mapTypeId: google.maps.MapTypeId.ROADMAP,
+                  mapTypeControl: false,
+                  streetViewControl: false,
+                  panControl: false,
+                  zoomControlOptions: {
+                     position: google.maps.ControlPosition.LEFT_BOTTOM
+                  }
+                });
+
+                var infowindow = new google.maps.InfoWindow({
+                  maxWidth: 160
+                });
+
+                var markers = new Array();
+
+                var iconCounter = 0;
+
+                // Add the markers and infowindows to the map
+                for (var i = 0; i <= 2; i++) {
+                  var marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(locationArray[i][0], locationArray[i][1]),
+                    map: map,
+                    icon: icons[iconCounter]
+                  });
+
+                  markers.push(marker);
+
+                  google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                    return function() {
+                      infowindow.setContent(locations[i][0]);
+                      infowindow.open(map, marker);
+                    }
+                  })(marker, i));
+
+                  iconCounter++;
+                  // We only have a limited number of possible icon colors, so we may have to restart the counter
+                  if(iconCounter >= iconsLength) {
+                    iconCounter = 0;
+                  }
+                }
+
+                function autoCenter() {
+                  //  Create a new viewpoint bound
+                  var bounds = new google.maps.LatLngBounds();
+                  //  Go through each...
+                  for (var i = 0; i < markers.length; i++) {
+                    bounds.extend(markers[i].position);
+                  }
+                  //  Fit these bounds to the map
+                  map.fitBounds(bounds);
+                }
+                autoCenter();
+              },
+
+              error: function(object, error){
+                console.log("Not working bro");
+              }
+            })
+      }
+
+    </script>
+  </body>
+</html>
