@@ -1,6 +1,7 @@
 package com.parse.starter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.location.Location;
 import android.location.LocationManager;
 import android.support.v7.app.AppCompatActivity;
@@ -73,12 +74,15 @@ public class RegisterGame extends AppCompatActivity {
                           gameScore.put("player" + i,"poop" );
                           fulled = true;
                           ParseObject pLocation = new ParseObject("playerLocations");
+
                           pLocation.put("pLocation", point);
                           pLocation.put("pLat", latitude);
                           pLocation.put("pLong", longitude);
                           pLocation.put("playerID", user.getObjectId());
                           pLocation.put("gameSession",gameScore.getObjectId());
                           pLocation.saveInBackground();
+                          Intent intent =  new Intent(RegisterGame.this,MapsActivity.class); //creats bridge to view
+                          startActivity(intent);
                           if (gameScore.getString("player3") == null) {
                               gameScore.put("full",true);
                           }
