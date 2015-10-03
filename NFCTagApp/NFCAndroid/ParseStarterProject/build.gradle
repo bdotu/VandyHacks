@@ -2,13 +2,13 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.parse'
 
 buildscript {
-  repositories {
-    mavenCentral()
-    maven { url 'https://maven.parse.com/repo' }
-  }
-  dependencies {
-    classpath 'com.parse.tools:gradle:1.+'
-  }
+    repositories {
+        mavenCentral()
+        maven { url 'https://maven.parse.com/repo' }
+    }
+    dependencies {
+        classpath 'com.parse.tools:gradle:1.+'
+    }
 }
 
 android {
@@ -31,10 +31,13 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:appcompat-v7:22.2.0'
 
-    compile 'com.parse.bolts:bolts-android:1.2.1'
+
+
+    compile 'com.android.support:appcompat-v7:22.2.0'
+    compile'com.parse.bolts:bolts-android:1.2.1'
     compile 'com.parse:parse-android:1.10.2'
+    compile'com.google.android.gms:play-services:7.5.0'
 }
 
 /* Uncomment if you enable ProGuard and you want to automatically upload symbols on build.

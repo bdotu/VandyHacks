@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/Users/kareemdasilva/Downloads/Parse-Starter-Project-1.10.2/ParseStarterProject/src/main/res/values-w820dp/dimens.xml -->
+    <!-- From: file:/Users/kareemdasilva/Code/VandyHacks/NFCTagApp/NFCAndroid/ParseStarterProject/src/main/res/values-w820dp/dimens.xml -->
     <eat-comment/>
     <dimen name="activity_horizontal_margin">64dp</dimen>
 </resources>

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Users/kareemdasilva/Code/VandyHacks/NFCTagApp/NFCAndroid/ParseStarterProject/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads/7.5.0/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="29ebc7e04d877062317c8cc0e68b20f0c1fcda66">
+        <dex dex="/Users/kareemdasilva/Code/VandyHacks/NFCTagApp/NFCAndroid/ParseStarterProject/build/intermediates/pre-dexed/debug/classes-7f2d80486e484a17ba541ebdaf30e3ef23aad5e8.jar" />
+    </item>
+    <item
+        jar="/Users/kareemdasilva/Code/VandyHacks/NFCTagApp/NFCAndroid/ParseStarterProject/build/intermediates/exploded-aar/com.google.android.gms/play-services-wearable/7.5.0/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="69dd177337ead693c408c8dddc9546bb6f1244fa">
+        <dex dex="/Users/kareemdasilva/Code/VandyHacks/NFCTagApp/NFCAndroid/ParseStarterProject/build/intermediates/pre-dexed/debug/classes-b2ec1512ef342b2a9820bc085b65fb62db2d8f6d.jar" />
+    </item>
+    <item
+        jar="/Users/kareemdasilva/Code/VandyHacks/NFCTagApp/NFCAndroid/ParseStarterProject/build/intermediates/exploded-aar/com.google.android.gms/play-services-location/7.5.0/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="1e98ef3f124bb7a11f8575f9ff5dfea330b61b6f">
+        <dex dex="/Users/kareemdasilva/Code/VandyHacks/NFCTagApp/NFCAndroid/ParseStarterProject/build/intermediates/pre-dexed/debug/classes-45d5048d6083ed47265b2ded68c3bbceb56f0352.jar" />
+    </item>
+    <item
+        jar="/Users/kareemdasilva/Code/VandyHacks/NFCTagApp/NFCAndroid/ParseStarterProject/build/intermediates/exploded-aar/com.google.android.gms/play-services-plus/7.5.0/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="272bc5d7063f24bc3a33ea1d318cde8f31f5ec4c">
+        <dex dex="/Users/kareemdasilva/Code/VandyHacks/NFCTagApp/NFCAndroid/ParseStarterProject/build/intermediates/pre-dexed/debug/classes-13a20530bc4d22aaf73a624c433d0a9feb5afb4e.jar" />
+    </item>
+    <item
+        jar="/Users/kareemdasilva/Code/VandyHacks/NFCTagApp/NFCAndroid/ParseStarterProject/build/intermediates/exploded-aar/com.google.android.gms/play-services-cast/7.5.0/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="8e3a972f28b8bae817e382257ba177a31bcadbbc">
+        <dex dex="/Users/kareemdasilva/Code/VandyHacks/NFCTagApp/NFCAndroid/ParseStarterProject/build/intermediates/pre-dexed/debug/classes-00bbcba8b219b153e40309575954a099b2fe9f52.jar" />
+    </item>
+    <item
+        jar="/Users/kareemdasilva/Code/VandyHacks/NFCTagApp/NFCAndroid/ParseStarterProject/build/intermediates/exploded-aar/com.google.android.gms/play-services-games/7.5.0/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="02bac2dc792d78241077861566f2c82da955e7fa">
+        <dex dex="/Users/kareemdasilva/Code/VandyHacks/NFCTagApp/NFCAndroid/ParseStarterProject/build/intermediates/pre-dexed/debug/classes-48e4a941ef86ddf93b3705a6310e6810519b8598.jar" />
+    </item>
+    <item
+        jar="/Users/kareemdasilva/Code/VandyHacks/NFCTagApp/NFCAndroid/ParseStarterProject/build/intermediates/exploded-aar/com.google.android.gms/play-services-analytics/7.5.0/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="e7b35244f50663b3f8d150714bca9ecd7a290da1">
+        <dex dex="/Users/kareemdasilva/Code/VandyHacks/NFCTagApp/NFCAndroid/ParseStarterProject/build/intermediates/pre-dexed/debug/classes-b00bc44a755037e127944eeff77714e6ae74bf97.jar" />
+    </item>
+    <item
+        jar="/Users/kareemdasilva/Code/VandyHacks/NFCTagApp/NFCAndroid/ParseStarterProject/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/7.5.0/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="06a42becc33232ec0ee125161da68c1829c9f8fd">
+        <dex dex="/Users/kareemdasilva/Code/VandyHacks/NFCTagApp/NFCAndroid/ParseStarterProject/build/intermediates/pre-dexed/debug/classes-a02de1ba4a224e46f7ca4091af8f19538f41aa72.jar" />
+    </item>
+    <item
+        jar="/Users/kareemdasilva/Code/VandyHacks/NFCTagApp/NFCAndroid/ParseStarterProject/build/intermediates/exploded-aar/com.google.android.gms/play-services-wallet/7.5.0/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="6836d188602ec5382d1967c58b00960eb8ff8773">
+        <dex dex="/Users/kareemdasilva/Code/VandyHacks/NFCTagApp/NFCAndroid/ParseStarterProject/build/intermediates/pre-dexed/debug/classes-527c10ced9a3083ee0ecf856e187e6c1fc7d850f.jar" />
+    </item>
+    <item
+        jar="/Users/kareemdasilva/Code/VandyHacks/NFCTagApp/NFCAndroid/ParseStarterProject/build/intermediates/exploded-aar/com.google.android.gms/play-services-safetynet/7.5.0/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="1a6411087ab88ce5542f593e63a2752b6b0d6f1a">
+        <dex dex="/Users/kareemdasilva/Code/VandyHacks/NFCTagApp/NFCAndroid/ParseStarterProject/build/intermediates/pre-dexed/debug/classes-3b54487ddd59fb37340801c9c980568ec548ed51.jar" />
+    </item>
+    <item
+        jar="/Users/kareemdasilva/Code/VandyHacks/NFCTagApp/NFCAndroid/ParseStarterProject/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="a78183f30e769a98ab4820794f597763088d3065">
+        <dex dex="/Users/kareemdasilva/Code/VandyHacks/NFCTagApp/NFCAndroid/ParseStarterProject/build/intermediates/pre-dexed/debug/classes-07514a937688c7be25d5b008deac56c537e05c7e.jar" />
+    </item>
+    <item
+        jar="/Users/kareemdasilva/Code/VandyHacks/NFCTagApp/NFCAndroid/ParseStarterProject/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/22.0.0/jars/libs/internal_impl-22.0.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="ba3df4eb0a630d7de294f0e48d3f9267d279b784">
+        <dex dex="/Users/kareemdasilva/Code/VandyHacks/NFCTagApp/NFCAndroid/ParseStarterProject/build/intermediates/pre-dexed/debug/internal_impl-22.0.0-5e134f47b7eb1fc39664e54ec76add8b821767d2.jar" />
+    </item>
+    <item
+        jar="/Users/kareemdasilva/Code/VandyHacks/NFCTagApp/NFCAndroid/ParseStarterProject/build/intermediates/exploded-aar/com.google.android.gms/play-services-panorama/7.5.0/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="ba207be21987c11b37d9f8faa08ed6e722569f30">
+        <dex dex="/Users/kareemdasilva/Code/VandyHacks/NFCTagApp/NFCAndroid/ParseStarterProject/build/intermediates/pre-dexed/debug/classes-4e05a6525de9eca5471db6a4dfbff62c7e5599e7.jar" />
+    </item>
+    <item
+        jar="/Users/kareemdasilva/Code/VandyHacks/NFCTagApp/NFCAndroid/ParseStarterProject/build/intermediates/exploded-aar/com.google.android.gms/play-services-fitness/7.5.0/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="a172852a35ff919e85b9b7f14bbc15c5bee25520">
+        <dex dex="/Users/kareemdasilva/Code/VandyHacks/NFCTagApp/NFCAndroid/ParseStarterProject/build/intermediates/pre-dexed/debug/classes-a14ee74e9ae25545c4aae19ed58cde6c144ee670.jar" />
+    </item>
+    <item
+        jar="/Users/kareemdasilva/Code/VandyHacks/NFCTagApp/NFCAndroid/ParseStarterProject/build/intermediates/exploded-aar/com.google.android.gms/play-services-appstate/7.5.0/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="68c140702c7242d914655bcb3164d9e8c45b84cb">
+        <dex dex="/Users/kareemdasilva/Code/VandyHacks/NFCTagApp/NFCAndroid/ParseStarterProject/build/intermediates/pre-dexed/debug/classes-0201173ed8e90b5320255a94bd3c265417bb3f6e.jar" />
+    </item>
+    <item
+        jar="/Users/kareemdasilva/Code/VandyHacks/NFCTagApp/NFCAndroid/ParseStarterProject/build/intermediates/exploded-aar/com.google.android.gms/play-services-appindexing/7.5.0/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="f02127a85abd52a2cd526d4c2409f21969f80ee8">
+        <dex dex="/Users/kareemdasilva/Code/VandyHacks/NFCTagApp/NFCAndroid/ParseStarterProject/build/intermediates/pre-dexed/debug/classes-d9f04831ad714074472fc686fc943ce048517e29.jar" />
+    </item>
+    <item
+        jar="/Users/kareemdasilva/Code/VandyHacks/NFCTagApp/NFCAndroid/ParseStarterProject/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/22.0.0/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="a1372c17fccacca753d3951d3ad820571cbce075">
+        <dex dex="/Users/kareemdasilva/Code/VandyHacks/NFCTagApp/NFCAndroid/ParseStarterProject/build/intermediates/pre-dexed/debug/classes-b0c2b088547703aa5094d2eed45f095fa68448eb.jar" />
+    </item>
+    <item
+        jar="/Users/kareemdasilva/Code/VandyHacks/NFCTagApp/NFCAndroid/ParseStarterProject/build/intermediates/exploded-aar/com.google.android.gms/play-services-gcm/7.5.0/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="8d736fefa22d896e84a268354b3ed48a42663150">
+        <dex dex="/Users/kareemdasilva/Code/VandyHacks/NFCTagApp/NFCAndroid/ParseStarterProject/build/intermediates/pre-dexed/debug/classes-fd102a7b17302ae5d7e33f3a92ea0e956bbaffe7.jar" />
+    </item>
+    <item
+        jar="/Users/kareemdasilva/Code/VandyHacks/NFCTagApp/NFCAndroid/ParseStarterProject/build/intermediates/exploded-aar/com.google.android.gms/play-services-nearby/7.5.0/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="6440e5e5cfe368f9bff3c537fb8988048069cb33">
+        <dex dex="/Users/kareemdasilva/Code/VandyHacks/NFCTagApp/NFCAndroid/ParseStarterProject/build/intermediates/pre-dexed/debug/classes-4b9f14a7b59257701d15ed974c5c2734cc565166.jar" />
+    </item>
+    <item
+        jar="/Users/kareemdasilva/Code/VandyHacks/NFCTagApp/NFCAndroid/ParseStarterProject/build/intermediates/exploded-aar/com.google.android.gms/play-services-drive/7.5.0/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="f44d03c138cb6488fdbaa65e3a7e5878861a56d8">
+        <dex dex="/Users/kareemdasilva/Code/VandyHacks/NFCTagApp/NFCAndroid/ParseStarterProject/build/intermediates/pre-dexed/debug/classes-056627a41582cf505e1caac08d94108232bce6d4.jar" />
+    </item>
+    <item
+        jar="/Users/kareemdasilva/Code/VandyHacks/NFCTagApp/NFCAndroid/ParseStarterProject/build/intermediates/exploded-aar/com.google.android.gms/play-services-identity/7.5.0/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="d405025c600055237c171a0bbabaa49d69696573">
+        <dex dex="/Users/kareemdasilva/Code/VandyHacks/NFCTagApp/NFCAndroid/ParseStarterProject/build/intermediates/pre-dexed/debug/classes-65d0c1708cbe978c1b45f52ea9f04980cba8677b.jar" />
+    </item>
+    <item
+        jar="/Users/kareemdasilva/Code/VandyHacks/NFCTagApp/NFCAndroid/ParseStarterProject/build/intermediates/exploded-aar/com.google.android.gms/play-services-appinvite/7.5.0/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="63ec6e9f4fe5482a7447d0f3091b8e543a02554c">
+        <dex dex="/Users/kareemdasilva/Code/VandyHacks/NFCTagApp/NFCAndroid/ParseStarterProject/build/intermediates/pre-dexed/debug/classes-f58e3bb758228aa3c3dc1752d82c2f984190a7ee.jar" />
+    </item>
+
+</items>
