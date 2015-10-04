@@ -8,8 +8,10 @@
   <body>
     <button type="button" onclick=gameSession()>Create Game Session</button>
     <button type="button" onclick=startGame()>Start a game</button>
-    <button type="button" onclick=getLocation()>Get Location</button>
+    <!-- <button type="button" onclick=getLocation()>Get Location</button> -->
     <button type="button" onclick="getNamesandRoles()">Get Names</button>
+    <button type="button" onclick=getCurrentLocation()>Get Current Location</button>
+
     <!-- <button type="button" id = "timer" onclick="startTimer()">Start Timer</button>
     <span id="time"></span> -->
 
@@ -195,7 +197,7 @@
                 error: function(object, error){
                   console.log("Error Here!");
                 }
-                console.log(usernames);
+                // console.log(usernames);
               })
               playerIt.push(object.get("isplayerIt"));
               // console.log(object.get("playerId") + " is " + object.get("isplayerIt"));
@@ -204,6 +206,25 @@
             console.log(playerIt);
           }
         })
+      }
+
+      function getCurrentLocation(){
+        var currentLocation = Parse.Object.extend("currentLocation");
+        var curloc = new currentLocation();
+
+        var query = new Parse.Query(currentLocation);
+        query.equalTo("playerID", "aHAP89es6b");
+        query.first({
+          success: function(object){
+            // console.log(object.get("playerID"));
+            console.log(object.get("lat"));
+            console.log(object.get("long"));
+          },
+          error: function(object, error){
+            console.log("Error");
+          }
+        })
+
       }
 
       //

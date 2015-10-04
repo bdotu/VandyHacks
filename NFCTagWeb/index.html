@@ -57,7 +57,7 @@
 
         <button  class="btn btn-warning btn-lg" type="submit" onclick="increaseTimer()">Increase Time</button>
         <button class="btn btn-primary btn-lg" type="submit" onclick="decreaseTimer()">Decrease Time</button>
-        <button class="btn btn-default btn-lg" type="submit">Change Tag</button>
+        <button class="btn btn-default btn-lg" type="submit" onclick="changeTag()">Change Tag</button>
         <button class="btn btn-success btn-lg" type="submit">Send Hint</button>
         <hr>
         <h1 id="timer"></h1>
@@ -72,13 +72,13 @@
             <td id="gm">Game Master</td><td>Master</td>
           </tr>
           <tr>
-            <td ><p id="player1">Player1</p></td><td>Target</td>
+            <td ><p id="player1">Player1</p></td><td id="tgt">Target</td>
           </tr>
           <tr>
-            <td id="player2">Player2</td><td>Chaser</td>
+            <td id="player2">Player2</td><td id="tgt">Chaser</td>
           </tr>
           <tr>
-            <td id="player3">Player3</td><td>Chaser</td>
+            <td id="player3">Player3</td><td id="tgt">Chaser</td>
           </tr>
         </table>
       </div>
