@@ -4,6 +4,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.location.Location;
 import android.location.LocationManager;
+import android.nfc.NdefMessage;
+import android.nfc.NdefRecord;
+import android.nfc.NfcAdapter;
+import android.nfc.NfcEvent;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,8 +17,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
-
+import android.nfc.NfcAdapter.CreateNdefMessageCallback;
 import com.parse.FindCallback;
 import com.parse.GetCallback;
 import com.parse.LogInCallback;
@@ -26,10 +32,11 @@ import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import java.util.ArrayList;
 
-public class RegisterGame extends AppCompatActivity {
+public class RegisterGame extends AppCompatActivity  implements CreateNdefMessageCallback {
     ParseUser user;
    Button join;
     double longitude;
+    NfcAdapter mNfcAdapter;
     double latitude;
     ParseGeoPoint point;
     int i = 1;
@@ -37,27 +44,66 @@ public class RegisterGame extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_game);
+        mNfcAdapter = NfcAdapter.getDefaultAdapter(this);
+        if (mNfcAdapter == null) {
+            Toast.makeText(this, "NFC is not available", Toast.LENGTH_LONG).show();
+            finish();
+            return;
+        }
+        // Register callback
+        mNfcAdapter.setNdefPushMessageCallback(this, this);
     join = (Button) findViewById(R.id.joinGame);
-        ParseUser.logInInBackground("player1", "player1pass", new LogInCallback() {
-            public void done(ParseUser user, ParseException e) {
-                if (user != null) {
-                    // Hooray! The user is logged in.
-                } else {
-                    // Signup failed. Look at the ParseException to see what happened.
+        //ParseUser.logOut();
+        user = ParseUser.getCurrentUser();
+        if (user == null) {
+            ParseUser.logInInBackground("Mouse", "poop", new LogInCallback() {
+                public void done(ParseUser user, ParseException e) {
+                    if (user != null) {
+
+                        LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+                        Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                        longitude = location.getLongitude();
+                        latitude = location.getLatitude();
+                        point = new ParseGeoPoint(latitude, longitude);
+
+                    } else {
+                        // Signup failed. Look at the ParseException to see what happened.
+                    }
                 }
-            }
-        });
-     user = ParseUser.getCurrentUser();
-        LocationManager lm = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
-        Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-        longitude = location.getLongitude();
-        latitude = location.getLatitude();
-        point = new ParseGeoPoint(latitude, longitude);
+            });
+        }
+
 
 
 
     }
+    @Override
+    public void onNewIntent(Intent intent) {
+        Intent poop =  new Intent(RegisterGame.this,MapsActivity.class);
+        // onResume gets called after this to handle the intent
+        setIntent(poop);
+    }
+    void processIntent(Intent intent) {
+        ///tagged = (TextView) findViewById(R.id.tag);
+        Parcelable[] rawMsgs = intent.getParcelableArrayExtra(
+                NfcAdapter.EXTRA_NDEF_MESSAGES);
+        // only one message sent during the beam
+        NdefMessage msg = (NdefMessage) rawMsgs[0];
+        // record 0 contains the MIME type, record 1 is the AAR, if present
+       // tagged.setText(new String(msg.getRecords()[0].getPayload()));
+    }
+    @Override
+    public NdefMessage createNdefMessage(NfcEvent event) {
+        String text = ("YES YOU ARE IT!");
+        NdefMessage msg = new NdefMessage(
+                new NdefRecord[] { NdefRecord.createMime(
+                        "application/vnd.com.parse.starter", text.getBytes()),
 
+                        NdefRecord.createApplicationRecord("com.parse.starter")
+                });
+
+        return msg;
+    }
   public void join(View view) {
       ParseQuery<ParseObject> query = ParseQuery.getQuery("GameSession");
 
@@ -65,37 +111,10 @@ public class RegisterGame extends AppCompatActivity {
       query.getInBackground("hmYW3cYPrO", new GetCallback<ParseObject>() {
           public void done(ParseObject gameScore, ParseException e) {
               if (e == null) {
-                  // Now let's update it with some new data. In this case, only cheatMode and score
-                  // will get sent to the Parse Cloud. playerName hasn't changed.
-                  boolean fulled = false;
-                  int i = 1;
-                  while (fulled == false){
-                      if (gameScore.getString("player" + i) == null) {
-                          gameScore.put("player" + i,"poop" );
-                          fulled = true;
-                          ParseObject pLocation = new ParseObject("playerLocations");
 
-                          pLocation.put("pLocation", point);
-                          pLocation.put("pLat", latitude);
-                          pLocation.put("pLong", longitude);
-                          pLocation.put("playerID", user.getObjectId());
-                          pLocation.put("gameSession",gameScore.getObjectId());
-                          pLocation.saveInBackground();
-                          Intent intent =  new Intent(RegisterGame.this,MapsActivity.class); //creats bridge to view
-                          startActivity(intent);
-                          if (gameScore.getString("player3") == null) {
-                              gameScore.put("full",true);
-                          }
-                      } else {
-                          i++;
-                      }
-                  }
+                  Intent intent = new Intent(RegisterGame.this, joinGame.class); //creats bridge to view
+                  startActivity(intent);
 
-
-
-
-
-                  gameScore.saveInBackground();
               }
           }
       });
@@ -120,6 +139,14 @@ public class RegisterGame extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+        // Check to see that the Activity started due to an Android Beam
+        if (NfcAdapter.ACTION_NDEF_DISCOVERED.equals(getIntent().getAction())) {
+            processIntent(getIntent());
+        }
     }
 
 }

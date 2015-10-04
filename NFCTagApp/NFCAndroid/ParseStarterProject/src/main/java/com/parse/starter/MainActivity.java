@@ -35,7 +35,7 @@ import java.nio.charset.Charset;
 import com.parse.ParseAnalytics;
 
 
-public class MainActivity extends ActionBarActivity  implements CreateNdefMessageCallback {
+/*public class MainActivity extends ActionBarActivity  implements CreateNdefMessageCallback {
   NfcAdapter mNfcAdapter;
   TextView tagged;
 
@@ -115,3 +115,4 @@ public class MainActivity extends ActionBarActivity  implements CreateNdefMessag
     }
   }
 }
+*/
