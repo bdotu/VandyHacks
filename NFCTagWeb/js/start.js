@@ -17,7 +17,8 @@ window.onload = function getLocation(){
   var playerArray = [];
   var player2Array = [];
   var query = new Parse.Query(playerLocations);
-  query.equalTo("playerID", "aHAP89es6b");
+  query.equalTo("gameSession", "MIDEJDBQdz");
+  query.equalTo("playerID", "myWy31kf5u");
   query.descending("createdAt");
   // query.limit(1);
   query.first({
@@ -34,7 +35,8 @@ window.onload = function getLocation(){
       //   initArray.push(object.get("long"));
       // }
       // Query another player location
-      query.equalTo("playerID", "T2N9GCgS3y");
+      query.equalTo("gameSession", "MIDEJDBQdz");
+      query.equalTo("playerID", "oXhsFnWScA");
       query.descending("createdAt");
       query.first({
         success: function(object){
@@ -249,8 +251,8 @@ window.onload = function getLocation(){
       currentDuration = currentDuration - 1;
       // console.log("tick - currentDuration: " + currentDuration);
       if (--timer < 0) {
-        // timer = duration;
-        display.textContent = "Time Up!"
+        timer = duration;
+        // display.textContent = "Time Up!"
       }
     }, 1000);
   }
