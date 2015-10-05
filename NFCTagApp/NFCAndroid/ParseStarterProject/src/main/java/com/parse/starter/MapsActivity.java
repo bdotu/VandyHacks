@@ -47,6 +47,7 @@ public class MapsActivity extends FragmentActivity implements  CreateNdefMessage
     ArrayList cords;
     TextView tagged;
     NfcAdapter mNfcAdapter;
+    boolean winner = false;
     int poop = 0;
 ;
 
@@ -88,7 +89,10 @@ public class MapsActivity extends FragmentActivity implements  CreateNdefMessage
 
         NdefMessage msg = (NdefMessage) rawMsgs[0];
         // record 0 contains the MIME type, record 1 is the AAR, if present
-        tagged.setText(new String(msg.getRecords()[0].getPayload()));
+
+            tagged.setTextColor(Color.RED);
+            tagged.setText(new String(msg.getRecords()[0].getPayload()));
+
 
     }
     @Override
@@ -135,9 +139,12 @@ public class MapsActivity extends FragmentActivity implements  CreateNdefMessage
     @Override
     protected void onResume() {
         super.onResume();
-        setUpMapIfNeeded();
+
         if (NfcAdapter.ACTION_NDEF_DISCOVERED.equals(getIntent().getAction())) {
             processIntent(getIntent());
+            winner = true;
+        } else {
+            setUpMapIfNeeded();
         }
     }
 
@@ -219,16 +226,17 @@ public class MapsActivity extends FragmentActivity implements  CreateNdefMessage
     }
 
     public void updateLocation(Location uLocation) {
-        //add marker here
-        mMap.clear();
-        LatLng currentPosition = new LatLng(uLocation.getLatitude(), uLocation.getLongitude());
-        mMap.addMarker(new MarkerOptions().position(currentPosition).title("Marker"));
-        final double lat = uLocation.getLatitude();
-        final double longs = uLocation.getLongitude();
+        if (winner == false ){
+            //add marker here
+            mMap.clear();
+            LatLng currentPosition = new LatLng(uLocation.getLatitude(), uLocation.getLongitude());
+            mMap.addMarker(new MarkerOptions().position(currentPosition).title("Marker"));
+            final double lat = uLocation.getLatitude();
+            final double longs = uLocation.getLongitude();
 
-        String id;
-        ParseObject currentLocation  = new ParseObject("currentLocation");
-        id = currentLocation.getObjectId();
+            String id;
+            ParseObject currentLocation  = new ParseObject("currentLocation");
+            id = currentLocation.getObjectId();
 
 
             currentLocation.put("lat", uLocation.getLatitude());
@@ -241,33 +249,35 @@ public class MapsActivity extends FragmentActivity implements  CreateNdefMessage
             currentLocation.saveInBackground();
 
 
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("currentLocation");
-        query.whereEqualTo("playerID", "qtelMf6bYU");
-        query.getFirstInBackground(new GetCallback<ParseObject>() {
-            public void done(ParseObject object, ParseException e) {
-                if (object != null) {
-                    LatLng currentPosition2 = new LatLng( object.getDouble("lat"),  object.getDouble("long"));
-                    mMap.addMarker(new MarkerOptions().position(currentPosition2).title("guy"));
-                } else {
-                    Log.d("score", "Retrieved the object.");
+            ParseQuery<ParseObject> query = ParseQuery.getQuery("currentLocation");
+            query.whereEqualTo("playerID", "qtelMf6bYU");
+            query.getFirstInBackground(new GetCallback<ParseObject>() {
+                public void done(ParseObject object, ParseException e) {
+                    if (object != null) {
+                        LatLng currentPosition2 = new LatLng( object.getDouble("lat"),  object.getDouble("long"));
+                        mMap.addMarker(new MarkerOptions().position(currentPosition2).title("guy"));
+                    } else {
+                        Log.d("score", "Retrieved the object.");
+                    }
                 }
-            }
-        });
+            });
 
-        ParseQuery<ParseObject> query2 = ParseQuery.getQuery("currentLocation");
-        query2.whereEqualTo("playerID", "myWy31kf5u");
-        query2.getFirstInBackground(new GetCallback<ParseObject>() {
-            public void done(ParseObject object, ParseException e) {
-                if (object != null) {
+            ParseQuery<ParseObject> query2 = ParseQuery.getQuery("currentLocation");
+            query2.whereEqualTo("playerID", "myWy31kf5u");
+            query2.getFirstInBackground(new GetCallback<ParseObject>() {
+                public void done(ParseObject object, ParseException e) {
+                    if (object != null) {
 
-                    LatLng currentPosition2 = new LatLng( object.getDouble("lat"), object.getDouble("long"));
-                    mMap.addMarker(new MarkerOptions().position(currentPosition2).title("guy"));
+                        LatLng currentPosition2 = new LatLng( object.getDouble("lat"), object.getDouble("long"));
+                        mMap.addMarker(new MarkerOptions().position(currentPosition2).title("guy"));
 
-                } else {
-                    Log.d("score", "Retrieved the object.");
+                    } else {
+                        Log.d("score", "Retrieved the object.");
+                    }
                 }
-            }
-        });
+            });
+        }
+
         }
 
 

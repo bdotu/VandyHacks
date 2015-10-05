@@ -14,21 +14,16 @@
         />
 
     <TextView
-        android:text="@string/hello_world"
+        android:text="You are the Chaser!"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tag"
-        android:textColor="#FF0000"
+        android:textColor="#fff00f"
         android:textSize="18pt"
         android:layout_below="@id/map"
         />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/map"
-        android:layout_toRightOf="@id/tag"
-        android:id="@+id/button"/>
+
 
     </RelativeLayout>
 
