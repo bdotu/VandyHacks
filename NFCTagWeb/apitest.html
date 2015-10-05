@@ -8,7 +8,12 @@
   <body>
     <button type="button" onclick=gameSession()>Create Game Session</button>
     <button type="button" onclick=startGame()>Start a game</button>
-    <button type="button" onclick=getLocation()>Get Location</button>
+    <!-- <button type="button" onclick=getLocation()>Get Location</button> -->
+    <button type="button" onclick="getNamesandRoles()">Get Names</button>
+    <button type="button" onclick=getCurrentLocation()>Get Current Location</button>
+
+    <!-- <button type="button" id = "timer" onclick="startTimer()">Start Timer</button>
+    <span id="time"></span> -->
 
     <div id="map" style="width: 500px; height: 400px;"></div>
 
@@ -56,7 +61,7 @@
             success: function(game){
               if (game.get("full") == true){
                 // console.log("Poop");
-                window.open("file:///Users/dotu/workspace/VandyHacks/NFCTagWeb/maps.html");
+                getLocation();
               } else {
                 gameSession();
               }
@@ -168,6 +173,83 @@
               }
             })
       }
+
+      var usernames = [];
+      var playerIt = [];
+
+      function getNamesandRoles(){
+        var whosIt = Parse.Object.extend("whosIt");
+        var User = Parse.Object.extend("User");
+        var name = new User();
+        var playId = new whosIt();
+        var query = new Parse.Query(whosIt);
+        var queryName = new Parse.Query(User);
+        query.equalTo("gameSession", "hmYW3cYPrO");
+        query.find({
+          success: function(results){
+            for (var i = 0; i < results.length; i++){
+              var object = results[i];
+              queryName.get(object.get("playerId"), {
+                success: function(name){
+                  usernames.push(name.get("username"));
+                  // console.log(name.get("username"));
+                },
+                error: function(object, error){
+                  console.log("Error Here!");
+                }
+                // console.log(usernames);
+              })
+              playerIt.push(object.get("isplayerIt"));
+              // console.log(object.get("playerId") + " is " + object.get("isplayerIt"));
+            }
+            console.log(usernames);
+            console.log(playerIt);
+          }
+        })
+      }
+
+      function getCurrentLocation(){
+        var currentLocation = Parse.Object.extend("currentLocation");
+        var curloc = new currentLocation();
+
+        var query = new Parse.Query(currentLocation);
+        query.equalTo("playerID", "aHAP89es6b");
+        query.first({
+          success: function(object){
+            // console.log(object.get("playerID"));
+            console.log(object.get("lat"));
+            console.log(object.get("long"));
+          },
+          error: function(object, error){
+            console.log("Error");
+          }
+        })
+
+      }
+
+      //
+      // function startTimer(duration, display) {
+      //   var timer = duration, minutes, seconds;
+      //   setInterval(function () {
+      //     minutes = parseInt(timer / 60, 10);
+      //     seconds = parseInt(timer % 60, 10);
+      //
+      //     minutes = minutes < 10 ? "0" + minutes : minutes;
+      //     seconds = seconds < 10 ? "0" + seconds : seconds;
+      //
+      //     display.textContent = minutes + ":" + seconds;
+      //
+      //     if (--timer < 0) {
+      //       timer = duration;
+      //     }
+      //   }, 1000);
+      // }
+      //
+      // window.getElementById('timer') = function () {
+      //   var fiveMinutes = 60 * 5,
+      //   display = document.querySelector('#time');
+      //   startTimer(fiveMinutes, display);
+      // };
 
     </script>
   </body>
